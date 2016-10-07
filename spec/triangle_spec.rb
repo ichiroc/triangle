@@ -24,6 +24,11 @@ describe TriangleTypeDetector do
       let(:params) { [1, 1, 1, 1] }
       it { is_expected.to eq not_triangle_message }
     end
+
+    context '数値と以外が含まれる時' do
+      let(:params) { %w(a b c) }
+      it { is_expected.to eq not_triangle_message }
+    end
   end
 
   describe '三角形' do

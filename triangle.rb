@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 class TriangleTypeDetector
   def self.run(*args)
+    return false unless args.any? { |x| x.is_a? Numeric }
     return '三角形じゃないです＞＜' unless triangle?(*args)
     return '正三角形ですね！' if regular_triangle?(*args)
     return '二等辺三角形ですね！' if isosceles_triangle?(*args)
@@ -10,7 +11,8 @@ class TriangleTypeDetector
 
   def self.triangle?(*args)
     return false unless args.size == 3
-    a, b, c = args
+    return false unless args.all? { |x| x.is_a? Numeric }
+    a, b, c = args.map(&:to_i)
     a + b > c &&
       b + c > a &&
       a + c > b
