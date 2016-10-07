@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 class TriangleTypeDetector
   def self.run(*args)
-    return false unless args.any? { |x| x.is_a? Numeric }
     return '三角形じゃないです＞＜' unless triangle?(*args)
     return '正三角形ですね！' if regular_triangle?(*args)
     return '二等辺三角形ですね！' if isosceles_triangle?(*args)
